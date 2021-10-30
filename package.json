@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "An command line application which takes user input to create a roster for a development team",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samurwin/team-profile-generator.git"
+  },
+  "author": "Sam Urwin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samurwin/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/samurwin/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
