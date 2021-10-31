@@ -4,6 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+
 // inquirer questions
 const questions = [
     {
@@ -34,6 +35,19 @@ const questions = [
                 return true;
             } else {
                 console.log('Please enter an email.');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: "What is the employee's ID number?",
+        validate: nameInput => {
+            if(nameInput) {
+                return true;
+            } else {
+                console.log('Please enter an ID.');
                 return false;
             }
         }
@@ -73,18 +87,52 @@ const questions = [
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'addEmployee',
+        message: 'Would you like to add another employee?',
+        default: false
     }
 ];
 
 // function to start application
-function start() {
+function start(employees) {
+    if(!employees) {
+        employees = [];
+    }
+
     // prompt questions
     inquirer.prompt(questions)
-    // then create new <role> object
-    // push <role> to the employeesArray
+    .then(({ role, ...employee }) => {
+        switch(role) {
+            case 'Manager':
+                employees.push(new Manager(employee.name, employee.email, employee.id, employee.officeNumber));
+                console.log(employees);
+                break;
+            case 'Engineer':
+                employees.push(new Engineer(employee.name, employee.email, employee.id, employee.github));
+                console.log(employees);
+                break;
+            case 'Intern':
+                employees.push(new Intern(employee.name, employee.email, employee.id, employee.school));
+                console.log(employees);
+                break;
+        }
+        if (employee.addEmployee) {
+            start(employees);
+          } else {
+              createPage(employees);
+          }
+    });
+};
+
+function createPage(employees) {
+    console.log(':)');
+}
+
     // then generate html using employeesArray data
     // then write html file
     // then copy css file to dist folder
-}
 
 start();
