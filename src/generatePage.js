@@ -1,60 +1,60 @@
 const generateEmployees = employees => {
     return `
-        <div class='flex-row align-center justify-center col-12>
+        <div class='flex-row align-center justify-center col-12'>
             ${employees
             .filter(({ officeNumber }) => officeNumber)
-            .forEach(manager => {
+            .map(Manager => {
                 return `
                     <div class='card flex-column col-3'>
                         <div class='card-header flex-column'>
-                            <h3>${manager.name}</h3>
-                            <h4 class='text-secondary'>${manager.getRole()}</h4>
+                            <h3>${Manager.name}</h3>
+                            <h4 class='text-secondary'>${Manager.getRole()}</h4>
                         </div>
                         <div class='card-body flex-column bg-secondary'>
-                            <p>ID: ${manager.id}</p>
-                            <p>Email: ${manager.email}</p>
-                            <p>Office Number: ${manager.officeNumber}</p>
+                            <p>ID: ${Manager.id}</p>
+                            <p>Email: ${Manager.email}</p>
+                            <p>Office Number: ${Manager.officeNumber}</p>
                         </div>
                     </div>
-                `
+                `;
             })
             .join('')}
 
             ${employees
             .filter(({ github }) => github)
-            .forEach(engineer => {
+            .map(Engineer => {
                 return `
                     <div class='card flex-column col-3'>
                         <div class='card-header flex-column'>
-                            <h3>${engineer.name}</h3>
-                            <h4 class='text-secondary'>${engineer.getRole()}</h4>
+                            <h3>${Engineer.name}</h3>
+                            <h4 class='text-secondary'>${Engineer.getRole()}</h4>
                         </div>
                         <div class='card-body flex-column bg-secondary'>
-                            <p>ID: ${engineer.id}</p>
-                            <p>Email: ${engineer.email}</p>
-                            <p>GitHub: <a href='https://github.com/${manager.github}>${manager.github}</a></p>
+                            <p>ID: ${Engineer.id}</p>
+                            <p>Email: ${Engineer.email}</p>
+                            <p>GitHub: <a href='https://github.com/${Engineer.github}'>${Engineer.github}</a></p>
                         </div>
                     </div>
-                `
+                `;
             })
             .join('')}
 
             ${employees
             .filter(({ school }) => school)
-            .forEach(intern => {
+            .map(Intern => {
                 return `
                     <div class='card flex-column col-3'>
                         <div class='card-header flex-column'>
-                            <h3>${intern.name}</h3>
-                            <h4 class='text-secondary'>${intern.getRole()}</h4>
+                            <h3>${Intern.name}</h3>
+                            <h4 class='text-secondary'>${Intern.getRole()}</h4>
                         </div>
                         <div class='card-body flex-column bg-secondary'>
-                            <p>ID: ${intern.id}</p>
-                            <p>Email: ${intern.email}</p>
-                            <p>School: ${intern.school}</p>
+                            <p>ID: ${Intern.id}</p>
+                            <p>Email: ${Intern.email}</p>
+                            <p>School: ${Intern.school}</p>
                         </div>
                     </div>
-                `
+                `;
             })
             .join('')}
         </div>

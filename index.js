@@ -4,6 +4,7 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/generatePage');
+const { rejects } = require('assert');
 
 
 // inquirer questions
@@ -129,11 +130,15 @@ function start(employees) {
 };
 
 function createPage(employees) {
-    console.log(':)');
-}
+    const pageData = generatePage(employees);
 
-    // then generate html using employeesArray data
-    // then write html file
-    // then copy css file to dist folder
+    fs.writeFile('./dist/index.html', pageData, err => {
+        if(err) throw err;
+    });
+
+    fs.copyFile('./src/style.css', './dist/assets/style.css', err => {
+        if(err) throw err;
+    });
+};
 
 start();
