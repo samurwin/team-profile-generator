@@ -110,15 +110,12 @@ function start(employees) {
         switch(role) {
             case 'Manager':
                 employees.push(new Manager(employee.name, employee.email, employee.id, employee.officeNumber));
-                console.log(employees);
                 break;
             case 'Engineer':
                 employees.push(new Engineer(employee.name, employee.email, employee.id, employee.github));
-                console.log(employees);
                 break;
             case 'Intern':
                 employees.push(new Intern(employee.name, employee.email, employee.id, employee.school));
-                console.log(employees);
                 break;
         }
         if (employee.addEmployee) {
